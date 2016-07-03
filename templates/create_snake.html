@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="container" id="page-content">
+	<div class="row">
+		<div class="col-xs-offset-4 col-xs-4">
+			<h1>Add Snake</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-offset-1 col-xs-6">
+			<form action="/create" method="POST" role="form" enctype="multipart/form-data" id="create">
+			<p><div class="input-group">
+				<span class="input-group-addon" id="basic-addon1">Jakes ID</span>
+				<input type="text" name="jakes-id" class="form-control" placeholder="Jakes ID" aria-describedby="basic-addon1">
+			</div></p>
+			<p><div class="input-group">
+				<span class="input-group-addon" id="basic-addon1">Price</span>
+				<input type="text" class="form-control" placeholder="Price" name="price" aria-describedby="basic-addon1">
+			</div></p>
+			<p>Morph: <select name="morph-id">
+					  {% for morph in morphs %}
+					  	<option value="{{morph.id}}">{{morph.name}}</option>
+					  {% endfor %}
+					  </select>
+			Gender: <select name="gender">
+						<option value="M">M</option>
+						<option value="F">F</option>
+				   </select></p>
+			<p><div class="form-group">
+				<label for="title">Title</label>
+				<textarea class="form-control" name="title" id="title"></textarea>
+			</div></p>
+			<p><div class="form-group">
+				<label for="description"> Description</label>
+				<textarea class="form-control" name="description" id="description" rows="15"></textarea>
+			</div></p>
+		</div>
+		<div class="col-xs-offset-1 col-xs-3">
+			<div id="photo-upload">			
+				<p><label class="btn btn-default btn-file">
+    				Upload Photo: <input type="file" style="display: none;" name="file[]" multiple>
+				</label></p>
+			</div>
+			<p><button class="btn btn-large btn-info" type="submit">Submit!</button></p>
+			</form>
+		</div>
+		<div class="col-xs-4"></div>
+	</div>
+</div>
+{% endblock %}

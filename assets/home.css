@@ -1,0 +1,127 @@
+body {
+	font-family: 'Impact', Charcoal, sans-serif;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-color: #665830;
+}
+
+h1 {
+	text-align: center;
+	color: #397628;
+	font-family: 'Impact', Charcoal, sans-serif;
+}
+
+button.morph {
+	border: 2px solid black;
+	border-radius: 30px;
+	text-align: center;
+	cursor: pointer;
+	font-family: 'Impact', Charcoal, sans-serif;
+}
+
+hr.style1 {
+    padding: 0;
+    border: none;
+    border-top: medium double #333;
+    color: #333;
+    text-align: center;
+    margin: 1em;
+}
+hr.style1:after {
+    content: "§";
+    display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: #665830;
+}
+
+.aside, .aside hr.style1:after {
+	background-color: gray;
+	border-radius: 1em;
+	margin-left: 2em;
+	margin-top: 1em;
+	background-color: #CDBF81;
+}
+
+.page-title { 
+	text-align: center;
+	font-family: 'Impact', Charcoal, sans-serif;
+}
+
+.prof-img {
+	max-width: 25vw;
+	margin: 1em;
+	margin-left: 4em;
+}
+
+.topbar-logo {
+	max-width: 13vw;
+}
+
+.featured-item {
+	text-align: center;
+	margin: 5em;
+}
+
+#home-content {
+	background-color: green;
+	margin-left: 1em;
+	padding: 1em;
+	padding-top: .25em;
+}
+
+#nav-sep-left, #nav-sep-right {
+	position: relative;
+    top: -4em;
+    /*left: 22em;*/
+    padding: 0;
+    margin: 0;
+}
+
+#nav-sep-right {
+	float: right;
+}
+
+#nav-sep-right {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+
+.snake {
+	border: 2px solid black;
+	border-radius: 30px;
+	text-align: center;
+	cursor: pointer;
+	font-family: 'Impact', Charcoal, sans-serif;
+	margin: 1em;
+	width: 23%;
+	background-color: #CDBF81;
+}
+
+.snake img {
+	max-width: 80%;
+	height: auto;
+}
+
+#site-title {
+	background-color: black;
+	padding-top: .75em;
+	padding-bottom: .75em; 
+}
+
+#site-title h1 {
+	font-size: 5em;
+	color: white;
+	font-family: 'Impact', Charcoal, sans-serif;
+}
+
+#page-content {
+	position: relative;
+	top : 50px;
+}

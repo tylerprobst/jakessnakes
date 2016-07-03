@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block body %}
+<br>
+{% for morph in morphs %}
+<div class="row">
+	<div class="morph col-xs-offset-2 col-xs-4">
+		<button class="morph">
+			<h2>{{morph.name}}</h2>
+			<p>picture of {{morph.name}} here!</p>
+		</button>
+		<div class="col-xs-6">
+			<p>Suspendisse et magna faucibus erat consectetur auctor. Ut fermentum venenatis massa vel lacinia. Donec efficitur arcu et lorem tempor, tempor lacinia purus vestibulum. Curabitur accumsan viverra orci, non sollicitudin justo pharetra dictum. Suspendisse molestie at ante non condimentum. Cras vitae sem sed lectus dictum luctus. Suspendisse sollicitudin semper nisi, vitae consequat mauris efficitur eu. Duis metus diam, bibendum et porta in, aliquam quis felis. Phasellus vitae consequat sapien. Donec elementum, nisi egestas molestie lobortis, felis risus consequat massa, at ullamcorper tortor eros ut mi. Vestibulum id augue lacinia diam laoreet ultricies. Praesent risus ante, mattis congue suscipit ac, laoreet vitae velit. Fusce id fermentum erat, vel consectetur dui.</p>
+		</div>
+	</div>
+</div>
+<br>
+{% endfor %}
+{% endblock %}
