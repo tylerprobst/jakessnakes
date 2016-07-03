@@ -3,26 +3,15 @@
 <div class="row">
 	<div class="col-xs-4 aside">
 		<img src="/assets/images/business-card.jpeg" class="prof-img">
-		<hr class="style1">
-		<div class="featured-item">
-			<p>featured items</p>
-		</div>
-		<hr class="style1">
-		<div class="featured-item">
-			<p>featured items</p>
-		</div>
-		<hr class="style1">
-		<div class="featured-item">
-			<p>featured items</p>
-		</div>
-		<hr class="style1">
-		<div class="featured-item">
-			<p>featured items</p>
-		</div>
-		<hr class="style1">
-		<div class="featured-item">
-			<p>featured items</p>
-		</div>
+		{% for snake in snakes %}
+			<hr class="style1">
+			<div class="featured-item">
+				<p>{{snake.title}}, {{snake.morph.name}}</p>
+				{% for img in snake.images %}
+					<img src="uploads/{{img.filename}}" class="img-thumbnail img-responsive">
+				{% endfor %}
+			</div>
+		{% endfor %}
 	</div>
 	<div class="col-xs-1"></div>
 	<div class="col-xs-7" id="home-content">

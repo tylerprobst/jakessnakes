@@ -1,5 +1,7 @@
 from flask import Flask, Blueprint, render_template, redirect, session, g, request, send_from_directory
 from models import *
+from blueprints import *
+from helpers import *
 import os, random, string
 
 application = Flask(__name__)
@@ -11,7 +13,11 @@ def shutdown_session(exception=None):
 
 @application.route('/')
 def home():
-	return render_template('home.html', snakes=Snake.query.all())
+	user = current_user()
+	username = None
+	if user:
+		username = user.username
+	return render_template('home.html', snakes=Snake.query.all(), current_user=user)
 
 @application.route('/create', methods=['GET', 'POST'])
 def create():
@@ -52,6 +58,9 @@ def assets(path):
 @application.route('/uploads/<path:path>')
 def uploads(path):
 	return send_from_directory('uploads', path)
+
+app.register_blueprint(auth.auth, session=session, g=g)
+app.register_blueprint(user.user, session=session, g=g)
 
 if __name__ =='__main__':
 	application.run()

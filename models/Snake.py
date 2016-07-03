@@ -14,6 +14,7 @@ class Snake(db.Model):
 	price = db.Column(db.Integer, nullable=False)
 	gender = db.Column(db.String(1), nullable=False)
 	images = db.relationship('Image', backref='snake')
+	cart_id = db.Column(db.Integer, db.ForeignKey('carts.id'))
 
 	@classmethod	
 	def create(cls, **kwargs):

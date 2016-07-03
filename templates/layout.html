@@ -27,11 +27,15 @@
           
           <ul class="nav navbar-nav navbar-right">
             <li role="presentation" class="btn btn-large"><a class="nav-button" href="/">Home</a></li>
-            <li role="presentation" class="btn btn-large"><a class="nav-button" href="/locale">Locales</a></li>
-			<li role="presentation" class="btn btn-large"><a class="nav-button" href="/morphs">Morphs</a></li>
-			<li role="presentation" class="btn btn-large"><a class="nav-button" href="/snakes">Snakes</a></li>
-			<li role="presentation" class="btn btn-large"><a class="nav-button" href="/create">Create</a></li>
-			<li role="presentation" class="btn btn-large"><a class="nav-button" href="/faq">FAQ</a></li>
+            {% if current_user %}
+                <li role="presentation" class="btn btn-large"><a class="nav-button" href="/log-out">Log Out</a></li>
+            {% else %}
+                <li role="presentation" class="btn btn-large"><a class="nav-button" href="/sign-up">Sign Up</a></li>
+            {% endif %}
+  			<li role="presentation" class="btn btn-large"><a class="nav-button" href="/morphs">Morphs</a></li>
+  			<li role="presentation" class="btn btn-large"><a class="nav-button" href="/snakes">Snakes</a></li>
+  			<li role="presentation" class="btn btn-large"><a class="nav-button" href="/create">Create</a></li>
+  			<li role="presentation" class="btn btn-large"><a class="nav-button" href="/faq">FAQ</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
