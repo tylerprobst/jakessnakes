@@ -22,7 +22,8 @@ def home():
 @application.route('/create', methods=['GET', 'POST'])
 def create():
 	if request.method == 'GET':
-		return render_template('create_snake.html', morphs=Morph.query.all())
+		user = current_user()
+		return render_template('create_snake.html', morphs=Morph.query.all(), current_user=user)
 	if request.method == 'POST':
 		morph_id = request.form.get('morph-id')
 		jakes_id = request.form.get('jakes-id')
@@ -40,16 +41,19 @@ def create():
 
 @application.route('/snakes', methods=['GET'])
 def snakes():
-	return render_template('snakes.html', snakes=Snake.query.all())
+	user = current_user()
+	return render_template('snakes.html', current_user=user, snakes=Snake.query.all())
 
 @application.route('/snake/<path:snake_id>', methods=['GET'])
 def snake(snake_id):
+	user = current_user()
 	snake = Snake.query.filter(Snake.id == snake_id).first()
-	return render_template('snake.html', snake=snake)
+	return render_template('snake.html', snake=snake, current_user=user)
 
 @application.route('/morphs', methods=['GET'])
 def morphs():
-	return render_template('morphs.html', morphs=Morph.query.all())
+	user = current_user()
+	return render_template('morphs.html', current_user=user, morphs=Morph.query.all())
 
 @application.route('/assets/<path:path>')
 def assets(path):

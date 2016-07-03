@@ -2,20 +2,21 @@ from db import db
 from flask import Blueprint, flash, Flask, g, redirect, render_template, request, session
 from flask_mail import Message, Mail
 from models import *
+from helpers import *
 from sqlalchemy.exc import IntegrityError, InvalidRequestError
 
 auth = Blueprint("auth", __name__)
 
 app = Flask(__name__)
 app.config.from_object('config')
-
 mail = Mail(app)
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
 	error = None
+	user = current_user()
 	if request.method == 'GET':
-		return render_template('login.html')
+		return render_template('login.html', current_user=user)
 	elif request.method == 'POST':
 		email = request.form.get('email')
 		password = request.form.get('password')
@@ -56,7 +57,8 @@ def logout():
 @auth.route('/signup', methods=['GET', 'POST'])
 def signup():
 	if request.method == 'GET':
-		return render_template('/signup.html')
+		user = current_user()
+		return render_template('/signup.html', current_user=user)
 	elif request.method == 'POST':
 		first_name = request.form.get('first_name')
 		last_name = request.form.get('last_name')

@@ -27,10 +27,14 @@
           
           <ul class="nav navbar-nav navbar-right">
             <li role="presentation" class="btn btn-large"><a class="nav-button" href="/">Home</a></li>
-            <li role="presentation" class="btn btn-large"><a class="nav-button" href="/signup">Sign Up</a></li>
+            {% if not current_user %}
+            	<li role="presentation" class="btn btn-large"><a class="nav-button" href="/login">Log In</a></li>
+            {% endif %}
   			<li role="presentation" class="btn btn-large"><a class="nav-button" href="/morphs">Morphs</a></li>
   			<li role="presentation" class="btn btn-large"><a class="nav-button" href="/snakes">Snakes</a></li>
-  			<li role="presentation" class="btn btn-large"><a class="nav-button" href="/create">Create</a></li>
+  			{% if current_user.admin %}
+  				<li role="presentation" class="btn btn-large"><a class="nav-button" href="/create">Create</a></li>
+  			{% endif %}
   			<li role="presentation" class="btn btn-large"><a class="nav-button" href="/faq">FAQ</a></li>
           </ul>
         </div><!--/.nav-collapse -->
