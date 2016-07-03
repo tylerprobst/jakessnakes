@@ -27,11 +27,7 @@
           
           <ul class="nav navbar-nav navbar-right">
             <li role="presentation" class="btn btn-large"><a class="nav-button" href="/">Home</a></li>
-            {% if current_user %}
-                <li role="presentation" class="btn btn-large"><a class="nav-button" href="/log-out">Log Out</a></li>
-            {% else %}
-                <li role="presentation" class="btn btn-large"><a class="nav-button" href="/sign-up">Sign Up</a></li>
-            {% endif %}
+            <li role="presentation" class="btn btn-large"><a class="nav-button" href="/signup">Sign Up</a></li>
   			<li role="presentation" class="btn btn-large"><a class="nav-button" href="/morphs">Morphs</a></li>
   			<li role="presentation" class="btn btn-large"><a class="nav-button" href="/snakes">Snakes</a></li>
   			<li role="presentation" class="btn btn-large"><a class="nav-button" href="/create">Create</a></li>
@@ -51,14 +47,25 @@
       </div><!--/.container -->
     </div><!--/.container-fluid -->
 
-	<div class="row">
+	<!-- <div class="row">
 		<div class="col-xs-6">
 			<img src="/assets/images/nav-sep.png" id="nav-sep-left">
 		</div>
 		<div class="col-xs-6">
 			<img src="/assets/images/nav-sep.png" id="nav-sep-right">
 		</div>
-	</div>
+	</div> -->
+	{% if current_user %}
+        <p id="logged-in-as">You are logged in as: <a href="/profile/{{current_user.id}}">{{current_user.username}}</a></p>
+        <form method="POST" id="logout_form" action="/logout">
+    		<li role="presentation" class="btn btn-large"><a href="javascript:{}" class="nav-button" onclick="document.getElementById('logout_form').submit();">LogOut</a></li>
+		</form>
+	{% endif %}
+    {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+            <p id="flash-message">{{message}}</p>
+        {% endfor %}
+    {% endwith %}
 		<div id="page_content">
 			{% block body %}{% endblock %}
 		</div>

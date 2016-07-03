@@ -59,8 +59,8 @@ def assets(path):
 def uploads(path):
 	return send_from_directory('uploads', path)
 
-app.register_blueprint(auth.auth, session=session, g=g)
-app.register_blueprint(user.user, session=session, g=g)
+application.register_blueprint(auth.auth, session=session, g=g)
+application.register_blueprint(user.user, session=session, g=g)
 
 if __name__ =='__main__':
 	application.run()
