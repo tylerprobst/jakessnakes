@@ -1,8 +1,4 @@
 from db import db
-# get rid of jakes id
-# add age column
-# add locale column
-
 
 class Snake(db.Model):
 	__tablename__ = 'snakes'
@@ -14,7 +10,18 @@ class Snake(db.Model):
 	price = db.Column(db.Integer, nullable=False)
 	gender = db.Column(db.String(1), nullable=False)
 	images = db.relationship('Image', backref='snake')
+	in_cart = db.Column(db.Boolean, default=False)
 	cart_id = db.Column(db.Integer, db.ForeignKey('carts.id'))
+
+	
+	def addToCart(self, cart_id):
+		if self.in_cart:
+			return False
+		else:
+			self.cart_id = cart_id
+			self.in_cart = True
+			db.session.commit()
+			return True
 
 	@classmethod	
 	def create(cls, **kwargs):
@@ -22,4 +29,10 @@ class Snake(db.Model):
 		db.session.add(snake)
 		db.session.commit()
 		return snake
+
+	@classmethod
+	def from_id(cls, snake_id):
+		return cls.query.filter(cls.id == snake_id).first()
+
+	
 

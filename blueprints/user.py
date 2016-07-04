@@ -7,28 +7,29 @@ user = Blueprint("user", __name__)
 app = Flask(__name__)
 app.config.from_object('config')
 
-@user.route('/users', methods=['GET'])
+@user.route('/cart', methods=['GET'])
 @logged_in
-def index():
-	return render_template('users.html', current_user=current_user(), users=filter(lambda x: x.id != g.current_user.id, User.query.all()))
-
-@user.route('/posts', methods=['GET', 'POST'])
-@logged_in
-def post():
+def cart():
 	if request.method == 'GET':
-		return render_template('posts.html', posts=Post.query.all())
-	elif request.method == 'POST':
-		body = request.form.get('body')
 		user = current_user()
-		Post.create(body=body, user_id=user.id)
-		return redirect('/profile/{0}'.format(user.id))
+		cart = user.cart
+		print getattr(cart, 'items')
+		return render_template('cart.html', current_user=user, cart=cart)
 
-@user.route('/profile/<path:user_id>', methods=['GET'])
+@user.route('/add-to-cart', methods=['POST'])
 @logged_in
-def profile(user_id):
-	if request.method == 'GET':
-		user = User.query.filter(User.id == user_id).first()
-		return render_template('profile.html', user=user, current_user=current_user())
+def addToCart():
+	if request.method == 'POST':
+		user = current_user()
+		cart = Cart.from_user_id(user.id)
+		snake_id = request.form.get('snake_id')
+		snake = Snake.from_id(snake_id)
+		result = snake.addToCart(cart.id)
+		if result:
+			flash('Snake Added To Cart')
+		else: 
+			flash('Snake Not Added to Cart')
+		return redirect('/cart')
 
 @user.route('/comment', methods=['POST'])
 @logged_in

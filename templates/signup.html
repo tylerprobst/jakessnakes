@@ -1,16 +1,16 @@
 {% extends "layout.html" %}
 {% block body %}
 <div class="col-xs-offset-5 col-xs-2">
-	<h2>Sign Up</h2>
+	<h2 class="text-center">Sign Up</h2>
 	<form method="POST" action="/signup">
-		<p><input name="first_name" type="text" placeholder="first" /></p>
-		<p><input name="last_name" type="text" placeholder="last" /></p>
-		<p><input name="username" type="text" placeholder="username" /></p>
-		<p><input name="password" type="password" placeholder="password" /></p>
-		<p><input name="confirm_password" type="password" placeholder="confirm password"/></p>
-		<p><input name="email" type="email" placeholder="email" /></p>
-		<p><input name="confirm_email" type="email" placeholder="confirm email"/></p>
-		<p><button type="submit">Submit</button></p>
+		<p class="col-xs-12 text-center"><input name="first_name" type="text" placeholder="first" /></p>
+		<p class="col-xs-12 text-center"><input name="last_name" type="text" placeholder="last" /></p>
+		<p class="col-xs-12 text-center"><input name="username" type="text" placeholder="username" /></p>
+		<p class="col-xs-12 text-center"><input name="password" type="password" placeholder="password" /></p>
+		<p class="col-xs-12 text-center"><input name="confirm_password" type="password" placeholder="confirm password"/></p>
+		<p class="col-xs-12 text-center"><input name="email" type="email" placeholder="email" /></p>
+		<p class="col-xs-12 text-center"><input name="confirm_email" type="email" placeholder="confirm email"/></p>
+		<p class="col-xs-12 text-center"><button type="submit">Submit</button></p>
 	</form>
 </div>
 {% endblock %}

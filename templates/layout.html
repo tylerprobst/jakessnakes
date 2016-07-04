@@ -36,6 +36,9 @@
   				<li role="presentation" class="btn btn-large"><a class="nav-button" href="/create">Create</a></li>
   			{% endif %}
   			<li role="presentation" class="btn btn-large"><a class="nav-button" href="/faq">FAQ</a></li>
+  			{% if current_user %}
+				<li role="presentation" class="btn btn-large"><a class="nav-button" href="/cart">Cart</a></li>
+			{% endif %}
           </ul>
         </div><!--/.nav-collapse -->
       </div>

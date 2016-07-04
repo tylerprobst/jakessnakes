@@ -18,6 +18,7 @@ class User(db.Model):
 	comments = db.relationship('Comment', backref='user', lazy=False)
 	verified = db.Column(db.Boolean, default=False)
 	email = db.Column(db.String(255), unique=True, nullable=False)
+	cart = db.relationship('Cart', backref='user')
 
 	def verify_password(self, password):
 		return bcrypt.hashpw(password.encode('utf-8'), self.password_hash.encode('utf-8')) == self.password_hash

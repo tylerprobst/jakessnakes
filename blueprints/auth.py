@@ -76,6 +76,7 @@ def signup():
 			return redirect('/signup')
 		else:	
 			user = User.create(first_name=first_name, last_name=last_name, username=username, email=email, password=password)
+			cart = Cart.create(user_id=user.id)
 			token = user.gentoken()
 			link = 'http://localhost:5000/verify?token=' + token
 			msg = Message('email works!', sender='tprobstcoding@gmail.com', recipients=['tprobstcoding@gmail.com'])

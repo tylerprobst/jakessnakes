@@ -52,7 +52,7 @@ def snake(snake_id):
 
 @application.route('/morphs', methods=['GET'])
 def morphs():
-	user = current_user()
+	user = current_user() 
 	return render_template('morphs.html', current_user=user, morphs=Morph.query.all())
 
 @application.route('/assets/<path:path>')

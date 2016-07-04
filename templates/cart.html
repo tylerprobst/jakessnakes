@@ -1,0 +1,8 @@
+{% extends "layout.html" %}
+{% block body %}
+<h2>{{current_user.first_name}}'s Shopping Cart</h2>
+{% for item in cart.items %}
+	<h2>Thing: {{item.title}} : {{item.description}}</h2>
+{% endfor %}
+<h2>WHY!!!!!</h2>
+{% endblock %}
